@@ -10,11 +10,13 @@ export class CatsService {
   constructor(private moduleRef: ModuleRef) {}
 
   onModuleInit() {
+    console.log('moduleRef inside onModuleInit', this.moduleRef);
     this.dogsService = this.moduleRef.get(DogsService, { strict: false });
   }
 
   getDogs() {
-    this.dogsService.getDogs();
+    console.log('dog service inside cats:', this.dogsService);
+    return this.dogsService.getDogs();
   }
 
   getCats() {
