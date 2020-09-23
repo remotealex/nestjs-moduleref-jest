@@ -1,20 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { ModuleRef } from '@nestjs/core';
 
-import { CatsService } from '../cats/cats.service';
+import { CatsController } from '../cats/cats.controller';
 
 @Injectable()
 export class DogsService {
-  private catsService!: CatsService;
+  private catsController!: CatsController;
 
   constructor(private moduleRef: ModuleRef) {}
 
   onModuleInit() {
-    this.catsService = this.moduleRef.get(CatsService, { strict: false });
+    this.catsController = this.moduleRef.get(CatsController, { strict: false });
   }
 
   getCats() {
-    this.catsService.getCats();
+    this.catsController.getCats();
   }
 
   getDogs() {
